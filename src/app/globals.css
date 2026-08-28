@@ -1,26 +1,84 @@
 @import "tailwindcss";
 
+/*
+  Single deliberately-designed dark theme — no light/dark toggle in v1.
+  Values match the dataviz-skill reference dark palette (chart surface /
+  page plane / ink / categorical slots), reused here as the whole site's
+  design tokens so the project accent colors are provably CVD-safe.
+*/
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  --background: #0d0d0d;
+  --surface: #1a1a19;
+  --foreground: #ffffff;
+  --foreground-secondary: #c3c2b7;
+  --foreground-muted: #898781;
+  --border: rgba(255, 255, 255, 0.1);
+  --divider: #2c2c2a;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --accent: #3987e5;
+  --accent-blue: #3987e5;
+  --accent-orange: #d95926;
+  --accent-aqua: #199e70;
+  --accent-yellow: #c98500;
+  --accent-magenta: #d55181;
+
+  --font-display: var(--font-space-grotesk);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-foreground: var(--foreground);
+  --color-foreground-secondary: var(--foreground-secondary);
+  --color-foreground-muted: var(--foreground-muted);
+  --color-border: var(--border);
+  --color-divider: var(--divider);
+
+  --color-accent: var(--accent);
+  --color-accent-blue: var(--accent-blue);
+  --color-accent-orange: var(--accent-orange);
+  --color-accent-aqua: var(--accent-aqua);
+  --color-accent-yellow: var(--accent-yellow);
+  --color-accent-magenta: var(--accent-magenta);
+
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}
+
+html {
+  color-scheme: dark;
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--background);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
