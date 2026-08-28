@@ -8,7 +8,7 @@ import { Footer } from "@/components/layout/footer";
 import { site } from "@/content/site";
 import "./globals.css";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://sadikpinon.com";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://sadik.com.au";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
